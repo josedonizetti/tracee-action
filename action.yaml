@@ -24,6 +24,8 @@ runs:
   - shell: bash
     working-directory: ${{github.action_path}}/profile
     run: |
+      echo "debug"
+      cat /tmp/tracee/out/trace_$GITHUB_RUN_ID.jsonl | grep sched_process_exec
       echo "Generating profile..."
       mkdir /tmp/tracee-action
       profile_config="${{github.workspace}}/.tracee/profile-config.json"
