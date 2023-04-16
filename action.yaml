@@ -13,9 +13,7 @@ runs:
     run: |
       echo "creating runner policy"
       runner_pid=$(pgrep Runner.Listener)
-      docker_pid=$(pgrep containerd-shim-runc-v2)
-      echo "docker pid"
-      echo $docker_pid
+      ps aux | grep containerd-shim-runc-v2
       sed -e "s/\$RUNNER_PID/$runner_pid/" ${{github.action_path}}/policies/runner.yaml.tmpl > ${{github.action_path}}/policies/runner.yaml
       echo "creating file_write policy"
       sed -e "s|\$WORKSPACE|${{github.workspace}}\/*|" ${{github.action_path}}/policies/file_writes.yaml.tmpl > ${{github.action_path}}/policies/file_writes.yaml
