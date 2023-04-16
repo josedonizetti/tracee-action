@@ -1,0 +1,9 @@
+name: docker_build
+description: trace docker build process tree
+defaultAction: log
+scope:
+  - binary=/usr/bin/containerd-shim-runc-v2
+  - follow
+rules:
+  - event: sched_process_exec
+  - event: net_packet_dns
