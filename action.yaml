@@ -30,7 +30,7 @@ runs:
       -v ${{github.action_path}}/signatures/file_write.rego:/tracee/signatures/file_write.rego \
       -v ${{github.action_path}}/signatures/miner_domain.rego:/tracee/signatures/miner_domain.rego \
       -v ${{github.action_path}}/policies:/tracee/policies \
-      aquasec/tracee:0.13.1 \
+      josedonizetti/tracee:0.14.0 \
       -p /tracee/policies \
       --output option:exec-hash $trace_env \
       --output json:/tmp/tracee/out/trace_$GITHUB_RUN_ID.jsonl
